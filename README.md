@@ -366,7 +366,7 @@ headerToken | 是 | string | 用户登录token | - | - | header
  cardNo: 证件号码
  cardType: 证件类型
  realName: 真实姓名
- status: level2 等级状态
+ status: level2 等级状态 2 驳回 1 通过 0 审核中
  nation: 国籍id
  message: level2 未审核通过原因
 ```
@@ -393,3 +393,190 @@ headerToken | 是 | string | 用户登录token | - | - | header
 参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
 --- | --- | --- | --- | --- | --- | ---
 headerToken | 是 | string | 用户登录token | - | - | header
+code | 否 | string | 谷歌验证码 | --- | --- | body
+dubblePhoneMsgType | 否 | string | 短信类型 | "25" | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 解除谷歌验证器
+> POST /api/v2/inner/user/removeMfa
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+dubblePhoneMsgType | 否 | string | 短信类型 | "9" | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+csessionid | 是 | string | 阿里校验csessionid | - | -| body
+sig | 是 | string | 阿里校验sig| - | -| body
+token | 是 | string | 阿里校验token| - | -| body
+scene | 是 | string | 阿里校验scene| - | -| body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 重置登陆密码
+> POST /api/v2/inner/user/resetPwd
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+newPwd | 是 | string | 新密码 | --- | --- | body
+oldPwd | 是 | string | 旧密码 | --- | --- | body
+newPwdT | 是 | string | 新密码二次输入 | --- | --- | body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 高级实名认证提交
+> POST /api/v2/inner/user/seniorCertify
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+front | 是 | string | 证件正面照 | 照片名称 | -- | body
+back | 是 | string | 证件反面照 | 照片名称
+hold | 是 | string | 手持照片名称 | 照片名称
+start | 是 | string | 证件有效期开始时间 | 0000-00-00 00:00:00 | --- | body
+end | 是 | string | 证件过期时间 | 0000-00-00 00:00:00 | --- | body
+isLong | 是 | string | 是否长期有效 | "0" 非长期有效 "1" 长期有效 | --- | body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 绑定或者更换邮箱
+> POST /api/v2/inner/user/setEmail
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+email | 是 | string | 需要绑定的邮箱名 | --- | --- | body
+dubblePhoneMsgType | 否 | string | 短信类型 | "21" | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+csessionid | 是 | string | 阿里校验csessionid | - | -| body
+sig | 是 | string | 阿里校验sig| - | -| body
+token | 是 | string | 阿里校验token| - | -| body
+scene | 是 | string | 阿里校验scene| - | -| body
+dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
+withdrawPassword | 否 | string | 资金密码 | 修改邮箱时使用 | --- | body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 绑定或者更换谷歌验证器
+>  POST /api/v2/inner/user/setMfa
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+code | 否 | string | 谷歌验证码 | --- | --- | body
+dubblePhoneMsgType | 否 | string | 短信类型 | "9" | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+status | 是 | boolean | 是否将谷歌设置未二次策略 | --- | --- | body
+csessionid | 是 | string | 阿里校验csessionid | - | -| body
+sig | 是 | string | 阿里校验sig| - | -| body
+token | 是 | string | 阿里校验token| - | -| body
+scene | 是 | string | 阿里校验scene| - | -| body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 绑定手机
+> POST /api/v2/inner/user/setMobile
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+phone | 是 | string | 手机号码 | --- | --- | body
+phoneMsgType | 是 | string | 短信类型 | "17" | --- | body
+phoneCode | 是 | string | 短信验证码 | --- | --- | body
+dubblePhoneMsgType | 否 | string | 短信类型 | "20" | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
+status | 是 | boolean | 是否将手机设置未二次策略 | --- | --- | body
+csessionid | 是 | string | 阿里校验csessionid | - | -| body
+sig | 是 | string | 阿里校验sig| - | -| body
+token | 是 | string | 阿里校验token| - | -| body
+scene | 是 | string | 阿里校验scene| - | -| body
+countryCode | 是 | string | 手机区号 | --- | --- | body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 设置策略（二次策略 交易策略 登陆策略）
+> POST /api/v2/inner/user/setPolicy
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+code | 是 | string | 策略对应code | -- | --- | body
+type | 是 | string |策略对应type | --- | --- | body
+dubblePhoneMsgType | 否 | string | 短信类型 | "20" | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
+status | 是 | boolean | 是否将手机设置未二次策略 | --- | --- | body
+csessionid | 是 | string | 阿里校验csessionid | - | -| body
+sig | 是 | string | 阿里校验sig| - | -| body
+token | 是 | string | 阿里校验token| - | -| body
+scene | 是 | string | 阿里校验scene| - | -| body
+
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 设置或修改资金密码
+ > POST /api/v2/inner/user/setTradePwd
+ ### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+pwd | 是 | string | 资金密码 | --- | --- | body
+pwdT | 是 |string | 资金密码二次输入 | --- | --- | body
+dubblePhoneMsgType | 否 | string | 短信类型 | "20" | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
+csessionid | 是 | string | 阿里校验csessionid | - | -| body
+sig | 是 | string | 阿里校验sig| - | -| body
+token | 是 | string | 阿里校验token| - | -| body
+scene | 是 | string | 阿里校验scene| - | -| body
+### 返回信息
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
