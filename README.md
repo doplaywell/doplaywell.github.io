@@ -584,6 +584,10 @@ scene | 否 | string | 阿里校验scene| - | -| body
 
 # 资产中心
 
+
+----------
+
+
 ## 账户资产信息
 > GET /api/v2/inner/finance
 ### 入参信息
