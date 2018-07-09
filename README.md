@@ -581,3 +581,150 @@ scene | 否 | string | 阿里校验scene| - | -| body
 ```javascript
 
 ```
+
+# 资产中心
+
+## 账户资产信息
+> GET /api/v2/inner/finance
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 资金流水
+> GET /api/v2/inner/finance/accountRecord
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+assetType | 否 | string | 资产类型 | --- | --- | body
+handleType | 否 | string | 流水类型 | --- | --- | body
+start | 否 | string | 查询开始时间 | 0000-00-00 00:00:00 | --- | body
+end | 否 | string | 查询结束时间 | 0000-00-00 00:00:00 | --- | body
+from | 否 | string | 查询起始id | --- | --- | body
+size | 否 | string | 查询结束id | --- | --- | body
+direction | 否 | string |  查询方向 | --- | --- | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 添加地址
+> POST /api/v2/inner/finance/addAddress
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+address | 是 | string | 地址 | --- | --- | body
+assetType | 是 | string |  地址对应的资产类型 | --- | --- | body
+remark | 是 | string | 地址标注 | --- | --- | body
+isAuth | 是 | boolean | 是否认证地址 | --- | --- | body
+source | 是 | int | 0 , 网页 | --- | --- | body
+withdrawPassword | 是 | string | 资金密码 | --- | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 申请提现
+> POST /api/v2/inner/finance/applyWithdraw
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+assetType | 是 | int |  资产类型 | --- | --- | body
+addressId | 是 | long | 地址id | --- | --- | body
+withdrawFee | 是 | string | 手续费 | -- | --- | body
+withdrawAmount | 是 | string | 提现数量 | --- | -- | body
+source | 是 | int | 0 , 网页 | --- | --- | body
+withdrawPassword | 是 | string | 资金密码 | --- | --- | body
+dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
+dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+
+## 取消体现
+> GET /api/v2/inner/finance/cancelWithdraw
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+assetType | 是 | int |  资产类型 | --- | --- | body
+id | 是 | long | 提现记录id | --- | --- | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 删除提币地址
+> POST /api/v2/inner/finance/disabledCoinAddress
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+id | 是 | long | 提现地址id | --- | --- | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+
+## 提现相关额度
+> GET /api/v2/inner/finance/financeLimit
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+lang | 是 | int | 语言 | --- | --- | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+## 获取充值地址
+> GET /api/v2/inner/finance/rechargeAddress
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+lang | 是 | int | 语言 | --- | --- | body
+assetType | 是 | int | 资产id | --- | --- | body
+### 返回数据
+```javascript
+
+```
+### 返回示例
+```javascript
+
+```
+
