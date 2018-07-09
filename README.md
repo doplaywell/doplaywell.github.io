@@ -398,11 +398,16 @@ dubblePhoneMsgType | 否 | string | 短信类型 | "25" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 ### 返回信息
 ```javascript
-
+data 即是token
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": "23d5e9ff55b74303b20abe0565f1004dhoAl",
+  "ts": 1531126019295,
+  "err_msg": "成功"
+}
 ```
 ## 解除谷歌验证器
 > POST /api/v2/inner/user/removeMfa
@@ -418,11 +423,31 @@ token | 否 | string | 阿里校验token| - | -| body
 scene | 否 | string | 阿里校验scene| - | -| body
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 重置登陆密码
 > POST /api/v2/inner/user/resetPwd
@@ -435,11 +460,31 @@ oldPwd | 是 | string | 旧密码 | --- | --- | body
 newPwdT | 是 | string | 新密码二次输入 | --- | --- | body
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 高级实名认证提交
 > POST /api/v2/inner/user/seniorCertify
@@ -455,11 +500,31 @@ end | 是 | string | 证件过期时间 | 0000-00-00 00:00:00 | --- | body
 isLong | 是 | string | 是否长期有效 | "0" 非长期有效 "1" 长期有效 | --- | body
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 绑定或者更换邮箱
 > POST /api/v2/inner/user/setEmail
@@ -478,11 +543,31 @@ dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
 withdrawPassword | 否 | string | 资金密码 | 修改邮箱时使用 | --- | body
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 绑定或者更换谷歌验证器
 >  POST /api/v2/inner/user/setMfa
@@ -501,11 +586,31 @@ token | 否 | string | 阿里校验token| - | -| body
 scene | 否 | string | 阿里校验scene| - | -| body
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 绑定手机
 > POST /api/v2/inner/user/setMobile
@@ -527,11 +632,31 @@ scene | 否 | string | 阿里校验scene| - | -| body
 countryCode | 是 | string | 手机区号 | --- | --- | body
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 设置策略（二次策略 交易策略 登陆策略）
 > POST /api/v2/inner/user/setPolicy
@@ -552,11 +677,31 @@ scene | 否 | string | 阿里校验scene| - | -| body
 
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 设置或修改资金密码
  > POST /api/v2/inner/user/setTradePwd
@@ -575,11 +720,31 @@ token | 否 | string | 阿里校验token| - | -| body
 scene | 否 | string | 阿里校验scene| - | -| body
 ### 返回信息
 ```javascript
-
+code = 0 成功 返回用户信息
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "inSensitive": true,
+    "level": 1,
+    "loginStrategy": 0,
+    "mail": "example@aa.com",
+    "mailChecked": true,
+    "mfa": false,
+    "phone": "13112121111",
+    "security": 0,
+    "sensitiveCode": 13,
+    "sensitiveDate": "2018-02-05 12:00:00",
+    "tradePwd": false,
+    "tradeStrategy": 0,
+    "twiceStrategy": 0,
+    "withdrawStrategy": 0
+  },
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 
 # 资产中心
@@ -594,13 +759,44 @@ scene | 否 | string | 阿里校验scene| - | -| body
 参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
 --- | --- | --- | --- | --- | --- | ---
 headerToken | 是 | string | 用户登录token | - | - | body
+assetType | 否 |string | 资产id，支持多个查询 用","分隔 | --- | --- | body
+lang | 否 | int | 语言 | --- | --- | body
 ### 返回数据
 ```javascript
-
+availableAmount 可用
+frozenAmount 冻结
+withdrawAmount 可提
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": [
+    {
+      "id": 1,
+      "availableAmount": 9,
+      "frozenAmount": 0,
+      "name": "btc",
+      "withdrawAmount": "7.9500"
+    },
+    {
+      "id": 2,
+      "availableAmount": 100,
+      "frozenAmount": 0,
+      "name": "eth",
+      "withdrawAmount": "82.543"
+    },
+    {
+      "id": 3,
+      "availableAmount": 0,
+      "frozenAmount": 0,
+      "name": "ltc",
+      "withdrawAmount": "0"
+    }
+  ],
+  "ts": 1531126746076,
+  "err_msg": "成功"
+}
 ```
 ## 资金流水
 > GET /api/v2/inner/finance/accountRecord
@@ -617,11 +813,44 @@ size | 否 | string | 查询结束id | --- | --- | body
 direction | 否 | string |  查询方向 | --- | --- | body
 ### 返回数据
 ```javascript
-
+amount 数量
+fee 手续费
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": [
+    {
+      "id": 53539707,
+      "createdDate": 1529044214000,
+      "modifyDate": null,
+      "userId": 350861,
+      "assetType": 1,
+      "type": 12,
+      "amount": 3.5,
+      "fee": 0,
+      "afterAmount": 3.5,
+      "totalAmount": 0,
+      "objectId": 123
+    }
+    {
+      "id": 53532245,
+      "createdDate": 1529042566000,
+      "modifyDate": null,
+      "userId": 350861,
+      "assetType": 1,
+      "type": 11,
+      "amount": -4.1,
+      "fee": 0,
+      "afterAmount": -4.1,
+      "totalAmount": 0,
+      "objectId": 0
+    }
+  ],
+  "ts": 1531126579555,
+  "err_msg": "成功"
+}
 ```
 ## 添加地址
 > POST /api/v2/inner/finance/addAddress
@@ -639,11 +868,16 @@ dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
 ### 返回数据
 ```javascript
-
+code=0成功
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {},
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 申请提现
 > POST /api/v2/inner/finance/applyWithdraw
@@ -661,11 +895,16 @@ dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
 ### 返回数据
 ```javascript
-
+code=0 成功
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {},
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 
 ## 取消体现
@@ -678,11 +917,16 @@ assetType | 是 | int |  资产类型 | --- | --- | body
 id | 是 | long | 提现记录id | --- | --- | body
 ### 返回数据
 ```javascript
-
+code=0 成功
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {},
+  "err_msg": "string",
+  "ts": 0
+}
 ```
 ## 删除提币地址
 > POST /api/v2/inner/finance/disabledCoinAddress
@@ -693,11 +937,16 @@ headerToken | 是 | string | 用户登录token | - | - | header
 id | 是 | long | 提现地址id | --- | --- | body
 ### 返回数据
 ```javascript
-
+code = 0 成功
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {},
+  "ts": 1531126391068,
+  "err_msg": "成功"
+}
 ```
 
 ## 提现相关额度
@@ -709,11 +958,41 @@ headerToken | 是 | string | 用户登录token | - | - | header
 lang | 是 | int | 语言 | --- | --- | body
 ### 返回数据
 ```javascript
-
+data list返回所有资产提币限额
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": [
+    {
+      "max": "100,000.0000",
+      "remain": "100,000.0000",
+      "name": "btc",
+      "available": "7.9500",
+      "id": 1,
+      "tips": true
+    },
+    {
+      "max": "90.000",
+      "remain": "90.000",
+      "name": "eth",
+      "available": "82.543",
+      "id": 2,
+      "tips": true
+    },
+    {
+      "max": "2.000",
+      "remain": "2.000",
+      "name": "ltc",
+      "available": "0",
+      "id": 3,
+      "tips": true
+    }
+  ],
+  "ts": 1531126391068,
+  "err_msg": "成功"
+}
 ```
 ## 获取充值地址
 > GET /api/v2/inner/finance/rechargeAddress
@@ -725,10 +1004,104 @@ lang | 是 | int | 语言 | --- | --- | body
 assetType | 是 | int | 资产id | --- | --- | body
 ### 返回数据
 ```javascript
-
+asset 资产id
+assetName 资产名
+address 地址
 ```
 ### 返回示例
 ```javascript
-
+{
+  "code": 0,
+  "data": {
+    "asset": 1,
+    "assetName": "btc",
+    "address": "jfckmgeorgmvl5io9vmfvw",
+    "confirmNum": 0
+  },
+  "ts": 1531126320336,
+  "err_msg": "成功"
+}
 ```
-
+## 提现记录
+> GET /api/v2/inner/finance/withdrawRecord
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+assetType | 是 | int | 资产id | --- | --- | body
+start | 否 | string | 查询开始时间 | 0000-00-00 00:00:00 | --- | body
+end | 否 | string | 查询结束时间 | 0000-00-00 00:00:00 | --- | body
+from | 否 | string | 查询起始id | --- | --- | body
+size | 否 | string | 查询结束id | --- | --- | body
+direction | 否 | string |  查询方向 | --- | --- | body
+### 返回数据
+```javascript
+data list返回
+```
+### 返回示例
+```javascript
+{
+  "code": 0,
+  "data": [
+    {
+      "id": 7220,
+      "createdDate": 1517393107000,
+      "modifyDate": 1523627048000,
+      "userId": 350861,
+      "assetType": 1,
+      "address": "1JkbhiWd6j9Z5iDA9qmE8DHVLsEnvUv2PQ",
+      "amount": 0.999,
+      "fee": 0.001,
+      "status": 5,
+      "targetUserid": 0,
+      "targetType": -1,
+      "outDesc": null,
+      "adminDesc": null,
+      "ipAddress": 2130706433,
+      "txid": "",
+      "isSendEmail": 0,
+      "adminOperator": 22
+    }
+    {
+      "id": 7225,
+      "createdDate": 1517647447000,
+      "modifyDate": null,
+      "userId": 350861,
+      "assetType": 1,
+      "address": "1JkbhiWd6j9Z5iDA9qmE8DHVLsEnvUv2PQ",
+      "amount": 9.999,
+      "fee": 0.001,
+      "status": -3,
+      "targetUserid": 0,
+      "targetType": -1,
+      "outDesc": null,
+      "adminDesc": null,
+      "ipAddress": 3232235660,
+      "txid": "",
+      "isSendEmail": 0,
+      "adminOperator": 0
+    }
+  ],
+  "ts": 1531128838993,
+  "err_msg": "成功"
+}
+```
+## 获取提现地址
+> GET /api/v2/inner/finance/withdrawAddress
+### 入参信息
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | 用户登录token | - | - | header
+assetType | 是 | int | 资产id | --- | --- | body
+### 返回数据
+```javascript
+data list返回
+### 返回示例
+```javascript
+{
+  "code": 0,
+  "data": {},
+  "ts": 1531129074366,
+  "err_msg": "成功"
+}
+```
