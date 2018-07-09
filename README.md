@@ -1105,3 +1105,825 @@ data list返回
   "err_msg": "成功"
 }
 ```
+# 交易
+## 委托交易
+> POST /api/v2/inner/trade/placeOrder
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | jwt | - | - | header
+tradePassword | 否 | string | 交易密码 | - | 返回值是57或111时，下次请求要带 | body
+symbol | 是 | number| 交易对id | - | - | body
+type | 是 | number| 交易类型 | 1买，2卖 | - | body
+price | 是 | number| 金额 | 大于0 | - | body
+amount | 是 | number | 数量 | 大于0 | - | body
+source | 否 | number | 来源代号 | 网页0 手机网页1 第三方2 iso3 android 4 | 默认0 | body
+
+### 返回值数据结构
+```
+ResponseMessage«委托下单返回值» {
+  code (integer, optional): 状态码 ,
+  data (委托下单返回值, optional): 数据 ,
+  err_msg (string, optional): 错误信息 ,
+  ts (integer, optional): 系统时间
+}
+委托下单返回值 {
+  id (integer, optional): 订单id,
+  createDate (string, optional): 委托时间 
+}
+```
+
+### 返回结果示例
+```javascript
+{
+  "code": 0,
+  "data": {
+    "id": 1037623,
+    "createDate": 1527564817000
+  },
+  "ts": 1527564817585,
+  "err_msg": "成功"
+}
+```
+## 委托撤单
+> /api/v2/inner/trade/cancelOrder
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | jwt | - | - | header
+symbol | 是 | number| 交易对id | - | - | body
+orderId| 是 | number| 订单id | - | - | body
+source | 否 | number | 来源代号 | 网页0 手机网页1 第三方2 iso3 android 4 | 默认0 | body
+
+### 返回值数据结构
+```
+ResponseMessage«int» {
+  code (integer, optional): 状态码 ,
+  data (integer, optional): 数据 ,
+  err_msg (string, optional): 错误信息 ,
+  ts (integer, optional): 系统时间
+}
+```
+### 返回示例
+```javascript
+{
+    "code": 0,
+    "data": {},
+    "ts": 1527479211866,
+    "err_msg": "成功"
+}
+```
+
+## 委托记录 获取缓存
+> GET /api/v2/inner/trade/entrustRecord
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | jwt | - | - | header
+
+### 返回值数据结构
+```
+ResponseMessage«委托详细信息» {
+  code (integer, optional): 状态码 ,
+  data (委托详细信息, optional): 数据 ,
+  err_msg (string, optional): 错误信息 ,
+  ts (integer, optional): 系统时间
+}
+委托详细信息 {
+  allMoney (number, optional): 委托金额 当前委托 ,
+  createDate (string, optional): 委托时间 ,
+  dealAmount (number, optional): 成交数量 ,
+  dealMoney (number, optional): 成交金额 历史委托 ,
+  dealPrice (number, optional): 成交均价 历史委托 ,
+  from (integer, optional): 来源 0 网页，1 手机网页，2 API，3 IOS 客户端 4 安卓客户端 ... ,
+  option (integer, optional): 期权 ,
+  orderID (integer, optional): 订单ID ,
+  status (integer, optional): 交易状态 0 等待成交 1部分成交 2完全成交 4撤单中 -1撤单 8下单失败 ,
+  symbol (integer, optional): 交易对id ,
+  tradeAmount (number, optional): 委托数量 ,
+  tradePrice (number, optional): 委托价格 当前委托 ,
+  type (integer, optional): 委托类型
+}
+```
+
+### 返回示例
+```javascript
+
+{
+  "code": 0,
+  "data": {
+    "currentList": [
+      {
+        "orderID": 6073,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1525694515000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.029719,
+        "allMoney": 0.029719,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 0,
+        "from": 0
+      }
+    ],
+    "historyList": [
+      {
+        "orderID": 6001,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1525316424000,
+        "option": null,
+        "tradeAmount": 5,
+        "tradePrice": 0.031532,
+        "allMoney": 0.15766,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 6000,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1525316414000,
+        "option": null,
+        "tradeAmount": 10,
+        "tradePrice": 0.031532,
+        "allMoney": 0.31532,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5970,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524733018000,
+        "option": null,
+        "tradeAmount": 3,
+        "tradePrice": 0.032204,
+        "allMoney": 0.096612,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 5969,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524732999000,
+        "option": null,
+        "tradeAmount": 2,
+        "tradePrice": 0.032204,
+        "allMoney": 0.064408,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5963,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571642000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033224,
+        "allMoney": 0.033224,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 5962,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571640000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033224,
+        "allMoney": 0.033224,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 5961,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571639000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033224,
+        "allMoney": 0.033224,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 5960,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571636000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033224,
+        "allMoney": 0.033224,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 5959,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571622000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033224,
+        "allMoney": 0.033224,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 5958,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571620000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033224,
+        "allMoney": 0.033224,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": -1,
+        "from": 0
+      },
+      {
+        "orderID": 5957,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571618000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033224,
+        "allMoney": 0.033224,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5956,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571610000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033155,
+        "allMoney": 0.033155,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5955,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571608000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033155,
+        "allMoney": 0.033155,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5954,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571607000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033155,
+        "allMoney": 0.033155,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5953,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571606000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.033155,
+        "allMoney": 0.033155,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5952,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571552000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5951,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571547000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5950,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571545000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5949,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571543000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5948,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571542000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5947,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571540000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5946,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571539000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5945,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571537000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5944,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571536000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      },
+      {
+        "orderID": 5943,
+        "type": 1,
+        "symbol": 101,
+        "createDate": 1524571534000,
+        "option": null,
+        "tradeAmount": 1,
+        "tradePrice": 0.000006,
+        "allMoney": 0.000006,
+        "dealPrice": 0,
+        "dealMoney": 0,
+        "dealAmount": 0,
+        "status": 8,
+        "from": 0
+      }
+    ]
+  },
+  "ts": 1527496357919,
+  "err_msg": "成功"
+}
+
+```
+
+## 委托记录 根据条件查询
+> /api/v2/inner/trade/orderRecord
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | jwt | - | - | header
+symbolId | 是 | number | 交易对id | - | 大于0 | body
+orderType| 否 | number | 交易类型| 1买，2卖 不传则两个都包含 | -| body
+status| 是| number | 要查询的订单状态组合|交易状态 0 等待成交 1部分成交 2完全成交 4撤单中 -1撤单 8下单失败 | 用,分开| body
+from | 否 | number | 订单id | 大于0 | 空表示不用，0 表示从第一条开始查，其它正数表明从指定id开始查,必需与size组合| body
+size | 否 | number | 查询条数 | 大于0 |  最大200 | body
+start | 否 | string | 开始日期 | - | yyyy-MM-dd HH:mm:ss 可以与size 或者end 配合 | body
+end | 否 | string | 结束日期  | - |   yyyy-MM-dd HH:mm:ss | body
+direction | 否 | number | 查询方向 | 0,1 | 0 由id小到大，1 由id 大到小，默认1 | body
+
+### 返回值数据结构
+```
+ResponseMessage«委托订单信息» {
+  code (integer, optional): 状态码 ,
+  data (委托订单信息, optional): 数据 ,
+  err_msg (string, optional): 错误信息 ,
+  ts (integer, optional): 系统时间
+}
+委托订单信息 {
+  allMoney (number, optional): 委托金额 当前委托 ,
+  createDate (string, optional): 委托创建时间 ,
+  dealAmount (number, optional): 成交数量 ,
+  dealMoney (number, optional): 成交金额 历史委托 ,
+  dealPrice (number, optional): 成交均价 历史委托 ,
+  from (integer, optional): 来源 0 网页，1 手机网页，2 API，3 IOS 客户端 4 安卓客户端 ... ,
+  modifyDate (string, optional): 委托最后修改时间 ,
+  option (integer, optional): 期权 ,
+  orderID (integer, optional): 订单ID ,
+  status (integer, optional): 交易状态 0 等待成交 1部分成交 2完全成交 4撤单中 -1撤单 8下单失败 ,
+  symbol (integer, optional): 交易对ID ,
+  tradeAmount (number, optional): 委托数量 ,
+  tradePrice (number, optional): 委托价格 当前委托 ,
+  type (integer, optional): 委托类型
+}
+```
+### 返回示例
+```javascript
+
+{
+  "code": 0,
+  "data": [
+    {
+      "orderID": 6001,
+      "type": 1,
+      "symbol": 101,
+      "option": null,
+      "tradeAmount": 5,
+      "tradePrice": 0.031532,
+      "allMoney": 0.15766,
+      "dealPrice": 0,
+      "dealMoney": 0,
+      "dealAmount": 0,
+      "status": -1,
+      "from": 0,
+      "createDate": 1525316424000,
+      "modifyDate": null
+    },
+    {
+      "orderID": 6000,
+      "type": 1,
+      "symbol": 101,
+      "option": null,
+      "tradeAmount": 10,
+      "tradePrice": 0.031532,
+      "allMoney": 0.31532,
+      "dealPrice": 0,
+      "dealMoney": 0,
+      "dealAmount": 0,
+      "status": 8,
+      "from": 0,
+      "createDate": 1525316414000,
+      "modifyDate": 1525415153000
+    }
+  ],
+  "ts": 1527497565180,
+  "err_msg": "成功"
+}
+```
+# 注册相关
+## 注册
+> /api/v2/inner/user/regist
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+userName |  是 | string | 用户名 | 邮箱号或手机号 | - | body
+ code | 是 | String | 校验码 | - | 由对应（手机或邮箱）的发送接口获取| body 
+password | 是 | string | 密码 | - | 用户输入的明文加密后进行urlencode | body
+passwordAgain | 是 | string | 重复密码 | - | 用户输入的明文加密后进行urlencode | body
+agreement| 是 | string | 同意协议| true或者false | - | body
+channelId | 否 | number | 渠道 | [待确认] | 默认为0 | body
+utmSource| 否 | string | 邀请人|  | 现阶段没用到 | body
+
+### 响应数据格式
+
+```
+ ResponseMessage«用户登录后返回的基本信息» {
+code (integer, optional):状态码 ,
+data (用户登录后返回的基本信息, optional):数据 ,
+err_msg (string, optional):错误信息 ,
+ts (integer, optional):系统时间
+}
+用户登录后返回的基本信息 {
+needEmail (boolean, optional):是否要绑定邮箱 ,
+needTwice (boolean, optional):是否要二次登录 ,
+nickName (string, optional):昵称 ,
+sessionId (string, optional):sessionId ,
+sessionKey (string, optional):sessionKey ,
+sso (boolean, optional):是否是sso，true是sso ,
+ssoUrl (string, optional):sso url ,
+token (string, optional):token ,
+uuid (string, optional):二次登录uuid
+} 
+```
+### 响应示例
+```javascript
+{
+	"code": 0,
+	"data": {
+		"nickName": "151****9785",
+		"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1Mjc0NzI4NDYsInN1YiI6IntcImNhY2hlS2V5XCI6XCJ1c2Vyc2Vzc2lvbjNlNzMwN2E3LWFhNDQtNDQ5MS05ZDExLTQ0OTg0NTMxYmViNVNmR25cIixcInVzZXJJZFwiOjM1MjE1OH0iLCJpc3MiOiJ1c2VyaWQiLCJhdWQiOiJ3ZWIiLCJleHAiOjE1Mjc0OTA4NDYsIm5iZiI6MTUyNzQ3Mjg0Nn0.0cfAYvUAGkRQzUQ2794X9_MWCS3Sz8SrSyoCS5CPHH4",
+		"sessionId": "3e7307a7-aa44-4491-9d11-44984531beb5SfGn",
+		"sessionKey": "coinfex_session_id",
+		"needTwice": false,
+		"uuid": null,
+		"sso": false,
+		"ssoUrl": null,
+		"needEmail": false
+	},
+	"ts": 1527472846614,
+	"err_msg": "成功"
+}
+```
+# 登录相关
+## 登录
+> POST /api/v2/inner/user/weblogin
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+loginName | 是 | string | 用户名 | 邮箱或者手机 | - | body
+password | 是 | string | 密码 | - | 前端要进行加密并进行urlencode | body
+from | 否 | string | 来源 | zendesk | 现阶段只是用来区分是否从zendesk跳转过来 | body
+udesk | 是 | string | 是否用到udesk | true,false| 默认false | body
+returnTo | 否 | string | 跳回url | - | 配合from 使用 | body
+csessionid | 否 | string | 阿里校验csessionid | - | 本接口返回106,-4 时要传| body
+sig | 否 | string | 阿里校验sig| - | 本接口返回106,-4 时要传| body
+token | 否 | string | 阿里校验token| - | 本接口返回106,-4 时要传| body
+scene | 否 | string | 阿里校验scene| - | 本接口返回106,-4 时要传| body
+
+### 返回值数据结构
+
+```
+ResponseMessage«用户登录后返回的基本信息» {
+  code (integer, optional):状态码 ,
+  data (用户登录后返回的基本信息, optional):数据 ,
+  err_msg (string, optional):错误信息 ,
+  ts (integer, optional):系统时间
+}
+用户登录后返回的基本信息 {
+  needEmail (boolean, optional):是否要绑定邮箱 ,
+  needTwice (boolean, optional):是否要二次登录 ,
+  nickName (string, optional):昵称 ,
+  sessionId (string, optional):sessionId ,
+  sessionKey (string, optional):sessionKey ,
+  sso (boolean, optional):是否是sso，true是sso ,
+  ssoUrl (string, optional):sso url ,
+  token (string, optional):token ,
+  uuid (string, optional):二次登录uuid
+} 
+```
+
+### 返回示例
+
+```javascript
+{
+	"code": 0,
+	"data": {
+		"nickName": "***@b.com",
+		"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1Mjc0NzcxMTQsInN1YiI6IntcImNhY2hlS2V5XCI6XCJ1c2Vyc2Vzc2lvbmE3ZDZkMGFhLWY5NjItNDE0ZS04OTMyLTU0MGZjMmE2OTYyNmZwZGRcIixcInVzZXJJZFwiOjB9IiwiaXNzIjoidXNlcmlkIiwiYXVkIjoid2ViIiwiZXhwIjoxNTI3NDk1MTE0LCJuYmYiOjE1Mjc0NzcxMTR9.kvVK4LazO827HmWiAdMCXknijpCN-xPifFYeJjq16rs",
+		"sessionId": "a7d6d0aa-f962-414e-8932-540fc2a69626fpdd",
+		"sessionKey": "coinfex_session_id",
+		"needTwice": null,
+		"uuid": null,
+		"sso": false,
+		"ssoUrl": null,
+		"needEmail": false
+	},
+	"ts": 1527477114739,
+	"err_msg": "成功"
+}
+```
+
+## 登录二次验证
+
+> POST /api/v2/inner/user/check
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+username| 是 | string | 用户名 | 邮箱或者手机 | - | body
+dubbleGoogleCode | 是 | string | 谷歌验证码 | - | - | body
+uuid | 是 | string | 一次登录返回的uuid | - | - | body
+
+### 返回值数据结构
+
+```
+ResponseMessage«用户登录后返回的基本信息» {
+  code (integer, optional):状态码 ,
+  data (用户登录后返回的基本信息, optional):数据 ,
+  err_msg (string, optional):错误信息 ,
+  ts (integer, optional):系统时间
+}
+用户登录后返回的基本信息 {
+  needEmail (boolean, optional):是否要绑定邮箱 ,
+  needTwice (boolean, optional):是否要二次登录 ,
+  nickName (string, optional):昵称 ,
+  sessionId (string, optional):sessionId ,
+  sessionKey (string, optional):sessionKey ,
+  sso (boolean, optional):是否是sso，true是sso ,
+  ssoUrl (string, optional):sso url ,
+  token (string, optional):token ,
+  uuid (string, optional):二次登录uuid
+} 
+```
+
+### 返回示例
+```javascript
+{
+	"code": 0,
+	"data": {
+		"nickName": "***@f.com",
+		"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1Mjc0Nzg4ODIsInN1YiI6IntcImNhY2hlS2V5XCI6XCJ1c2Vyc2Vzc2lvbmNhNmYxZWUyLTRlNTQtNDJmOS04ODAyLTgzYzc3ZTUyMWJmNmVyVWRcIixcInVzZXJJZFwiOjB9IiwiaXNzIjoidXNlcmlkIiwiYXVkIjoid2ViIiwiZXhwIjoxNTI3NDk2ODgyLCJuYmYiOjE1Mjc0Nzg4ODJ9.dqYWok8u1XG6cvq9PlYCqjmmMt9DjfYKNRi3dPNLPfs",
+		"sessionId": "ca6f1ee2-4e54-42f9-8802-83c77e521bf6erUd",
+		"sessionKey": "coinfex_session_id",
+		"needTwice": null,
+		"uuid": null,
+		"sso": false,
+		"ssoUrl": null,
+		"needEmail": false
+	},
+	"ts": 1527478882453,
+	"err_msg": "成功"
+}
+
+```
+
+## 退出登录
+
+>POST /api/v2/inner/user/logout
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 是 | string | jwt | - | - | header
+
+### 返回值数据结构
+
+```
+ResponseMessage {
+  code (integer, optional):状态码 ,
+  data (object, optional):数据 ,
+  err_msg (string, optional):错误信息 ,
+  ts (integer, optional):系统时间
+} 
+```
+### 返回示例
+```javascript
+{
+	"code": 0,
+	"data": {},
+	"ts": 1527479211866,
+	"err_msg": "成功"
+}
+```
+
+## 登录页面初始化信息
+
+> POST /api/v2/inner/user/login/pageInit
+
+参数  |  必须  | 类型  | 描述  | 取值范围  | 特别说明或默认值|位置
+--- | --- | --- | --- | --- | --- | ---
+headerToken | 否 | string | jwt | - | 判断用户登录状态要传 | header
+
+### 返回值数据结构
+
+```
+ResponseMessage«登录界面初始化» {
+  code (integer, optional):状态码 ,
+  data (登录界面初始化, optional):数据 ,
+  err_msg (string, optional):错误信息 ,
+  ts (integer, optional):系统时间
+}
+登录界面初始化 {
+  ali (boolean, optional):是否需要阿里验证 true需要 ,
+  userlogin (boolean, optional):用户是否登录 true已登录
+} 
+```
+
+### 返回示例
+```javascript
+{
+	"code": 0,
+	"data": {
+		"userlogin": false,
+		"ali": false
+	},
+	"ts": 1527487039934,
+	"err_msg": "成功"
+}
+```
+
+
