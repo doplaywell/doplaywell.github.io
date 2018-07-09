@@ -412,10 +412,10 @@ dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 headerToken | 是 | string | 用户登录token | - | - | header
 dubblePhoneMsgType | 否 | string | 短信类型 | "9" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
-csessionid | 是 | string | 阿里校验csessionid | - | -| body
-sig | 是 | string | 阿里校验sig| - | -| body
-token | 是 | string | 阿里校验token| - | -| body
-scene | 是 | string | 阿里校验scene| - | -| body
+csessionid | 否 | string | 阿里校验csessionid | - | -| body
+sig | 否 | string | 阿里校验sig| - | -| body
+token | 否 | string | 阿里校验token| - | -| body
+scene | 否 | string | 阿里校验scene| - | -| body
 ### 返回信息
 ```javascript
 
@@ -470,10 +470,10 @@ headerToken | 是 | string | 用户登录token | - | - | header
 email | 是 | string | 需要绑定的邮箱名 | --- | --- | body
 dubblePhoneMsgType | 否 | string | 短信类型 | "21" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
-csessionid | 是 | string | 阿里校验csessionid | - | -| body
-sig | 是 | string | 阿里校验sig| - | -| body
-token | 是 | string | 阿里校验token| - | -| body
-scene | 是 | string | 阿里校验scene| - | -| body
+csessionid | 否 | string | 阿里校验csessionid | - | -| body
+sig | 否 | string | 阿里校验sig| - | -| body
+token | 否 | string | 阿里校验token| - | -| body
+scene | 否 | string | 阿里校验scene| - | -| body
 dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
 withdrawPassword | 否 | string | 资金密码 | 修改邮箱时使用 | --- | body
 ### 返回信息
@@ -494,10 +494,10 @@ code | 否 | string | 谷歌验证码 | --- | --- | body
 dubblePhoneMsgType | 否 | string | 短信类型 | "9" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 status | 是 | boolean | 是否将谷歌设置未二次策略 | --- | --- | body
-csessionid | 是 | string | 阿里校验csessionid | - | -| body
-sig | 是 | string | 阿里校验sig| - | -| body
-token | 是 | string | 阿里校验token| - | -| body
-scene | 是 | string | 阿里校验scene| - | -| body
+csessionid | 否 | string | 阿里校验csessionid | - | -| body
+sig | 否 | string | 阿里校验sig| - | -| body
+token | 否 | string | 阿里校验token| - | -| body
+scene | 否 | string | 阿里校验scene| - | -| body
 ### 返回信息
 ```javascript
 
@@ -519,10 +519,10 @@ dubblePhoneMsgType | 否 | string | 短信类型 | "20" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
 status | 是 | boolean | 是否将手机设置未二次策略 | --- | --- | body
-csessionid | 是 | string | 阿里校验csessionid | - | -| body
-sig | 是 | string | 阿里校验sig| - | -| body
-token | 是 | string | 阿里校验token| - | -| body
-scene | 是 | string | 阿里校验scene| - | -| body
+csessionid | 否 | string | 阿里校验csessionid | - | -| body
+sig | 否 | string | 阿里校验sig| - | -| body
+token | 否 | string | 阿里校验token| - | -| body
+scene | 否 | string | 阿里校验scene| - | -| body
 countryCode | 是 | string | 手机区号 | --- | --- | body
 ### 返回信息
 ```javascript
@@ -544,10 +544,10 @@ dubblePhoneMsgType | 否 | string | 短信类型 | "20" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
 status | 是 | boolean | 是否将手机设置未二次策略 | --- | --- | body
-csessionid | 是 | string | 阿里校验csessionid | - | -| body
-sig | 是 | string | 阿里校验sig| - | -| body
-token | 是 | string | 阿里校验token| - | -| body
-scene | 是 | string | 阿里校验scene| - | -| body
+csessionid | 否 | string | 阿里校验csessionid | - | -| body
+sig | 否 | string | 阿里校验sig| - | -| body
+token | 否 | string | 阿里校验token| - | -| body
+scene | 否 | string | 阿里校验scene| - | -| body
 
 ### 返回信息
 ```javascript
@@ -568,10 +568,10 @@ pwdT | 是 |string | 资金密码二次输入 | --- | --- | body
 dubblePhoneMsgType | 否 | string | 短信类型 | "20" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 dubbleGoogleCode | 否 | string | 谷歌验证码 | --- | --- | body
-csessionid | 是 | string | 阿里校验csessionid | - | -| body
-sig | 是 | string | 阿里校验sig| - | -| body
-token | 是 | string | 阿里校验token| - | -| body
-scene | 是 | string | 阿里校验scene| - | -| body
+csessionid | 否 | string | 阿里校验csessionid | - | -| body
+sig | 否 | string | 阿里校验sig| - | -| body
+token | 否 | string | 阿里校验token| - | -| body
+scene | 否 | string | 阿里校验scene| - | -| body
 ### 返回信息
 ```javascript
 
