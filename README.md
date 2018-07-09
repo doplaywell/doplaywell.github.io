@@ -491,6 +491,7 @@ withdrawPassword | 否 | string | 资金密码 | 修改邮箱时使用 | --- | b
 --- | --- | --- | --- | --- | --- | ---
 headerToken | 是 | string | 用户登录token | - | - | header
 code | 否 | string | 谷歌验证码 | --- | --- | body
+dubbleGoogleCode | 否 | string | 原谷歌验证码 | --- |--- | body
 dubblePhoneMsgType | 否 | string | 短信类型 | "9" | --- | body
 dubblePhoneCode | 否 | string | 短信验证码 | --- | --- | body
 status | 是 | boolean | 是否将谷歌设置未二次策略 | --- | --- | body
