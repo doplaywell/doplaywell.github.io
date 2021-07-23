@@ -108,7 +108,7 @@
 .navigation__item {
   &::after {
     display: block;
-    margin-bottom: -4px;
+    margin-bottom: 1px;
     content: "";
     @include split-line(bottom, 4px, transparent);
   }
