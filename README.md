@@ -1,5 +1,1 @@
-# [TeXt Theme](https://github.com/kitian616/jekyll-TeXt-theme)
-
-## License
-
-TeXt Theme is [MIT licensed](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/LICENSE).
+#### Site powered by [Jekyll](https://jekyllrb.com/) & [TeXt Theme](https://github.com/kitian616/jekyll-TeXt-theme).
