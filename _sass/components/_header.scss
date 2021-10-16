@@ -1,6 +1,5 @@
 .header {
-  background-image: linear-gradient(52deg, #1890ff52, #f3705530,
-    #7850b811, #22bda811, #00000066);
+  background: $header-background;
   a {
     font-weight: map-get($base, font-weight);
     text-decoration: none !important;

@@ -20,14 +20,14 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : https://doplaywell.github.io
 baseurl : # does not include hostname
-title   : doplaywell
+title   : loveahnee
 description: > # this means to ignore newlines until "Language & timezone"
   doplaywell
 
 
 ## => Language and Timezone
 ##############################
-lang: en
+lang: zh
 timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 
@@ -35,7 +35,7 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : doplaywell
+  name      : loveahnee
   url       :
   avatar    : # path or url of avatar image (square)
   bio       : I am an amazing person.
